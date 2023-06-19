@@ -630,17 +630,11 @@
     (.writeField "sType" VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO)
     (.writeField "poolSizeCount" (int 2))
     
-    (.writeField "maxSets" (int 10)) ;; chosen randomly
+    (.writeField "maxSets" (int 1))
     (.writeField "pPoolSizes"
                  (struct-array VkDescriptorPoolSizeByReference
-                               [{"type" VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
-                                 "descriptorCount" (int 5)}
-                                {"type" VK_DESCRIPTOR_TYPE_STORAGE_BUFFER
-                                 "descriptorCount" (int 5)}
-                                ])
-                 #_(doto (VkDescriptorPoolSizeByReference.)
-                     (.writeField "type" VK_DESCRIPTOR_TYPE_STORAGE_BUFFER)
-                     (.writeField "descriptorCount" (int 2))))))
+                               [{"type" VK_DESCRIPTOR_TYPE_STORAGE_BUFFER
+                                 "descriptorCount" (int 2)}]))))
 (def descriptor-pool* (PointerByReference.))
 (assert (zero? (vkCreateDescriptorPool device descriptor-pool-create-info nil descriptor-pool*)))
 (def descriptor-pool (.getValue descriptor-pool*))
