@@ -16,6 +16,14 @@ Before running, the compute shader, `Square.hlsl` must be compiled to `Square.hs
 
 The code is mostly boilerplate. The main idea of the program is to setup a buffer of 10 int32's, square them using the computer shader `Square.hlsl`, and then retrieve the result.
 
+## Running
+
+```sh
+clojure -M:project -m com.phronemophobic.volcano
+```
+
+If everything is setup correctly, the integers from 0 to 9 should be printed along with their squares (and some debug info).
+
 
 ## License
 
